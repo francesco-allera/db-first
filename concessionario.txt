@@ -1,0 +1,25 @@
+database = concessionario;
+tabella = cars;
+
+    NOME COLONNA            |   TIPI           |    ATTRIBUTI
+----------------------------|------------------|----------------------------------------
+    car_id (Primary Key)    |   MEDIUMINT      |    AUTO_INCREMENT (UNIQUE, NOTNULL)
+    new                     |   TINYINT(1)     |    NOTNULL DEFAULT 0
+    first_registration      |   DATE           |    NOTNULL DEFAULT giorno corrente
+    kms                     |   MEDIUMINT      |    NOTNULL DEFAULT 0
+    brand                   |   VARCHAR        |    NOTNULL
+    model                   |   VARCHAR        |    NOTNULL
+    version                 |   VARCHAR        |    NULL
+    body_type               |   VARCHAR        |    NULL
+    color                   |   VARCHAR        |    NOTNULL
+    seats                   |   TINYINT(2)     |    NOTNULL
+    doors                   |   TINYINT(1)     |    NOTNULL
+    transmission            |   VARCHAR        |    NOTNULL DEFAULT 'manuale'
+    kW                      |   TINYINT        |    NULL
+    horse_power             |   SMALLINT       |    NOTNULL
+    engine_capacity         |   VARCHAR        |    NOTNULL
+    fuel                    |   VARCHAR        |    NOTNULL
+    euro                    |   FLOAT(4,2)     |    NOTNULL
+    license_plate           |   VARCHAR        |    NOTNULL DEFAULT 'nuova targa'
+    optionals               |   TEXT           |    NULL
+    price                   |   FLOAT(9,2)     |    NOTNULL DEFAULT 'da concordare'

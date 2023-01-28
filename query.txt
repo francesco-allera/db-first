@@ -1,0 +1,67 @@
+- Selezionare tutti gli ospiti
+
+    SELECT *
+    FROM `ospiti`;
+
+
+- Selezionare tutti gli ospiti con document type = a CI
+
+    SELECT *
+    FROM `ospiti`
+    WHERE `document_type` = 'CI';
+
+
+- Selezionare i paganti che abbiano un ospite id associato
+
+    SELECT *
+	FROM `paganti`
+	WHERE `ospite_id` IS NOT NULL // soluzione migliore
+	    OR `ospite_id` <> "NULL" // work around
+	    OR `ospite_id` > 0 // va bene
+        OR `ospite_id`; // uguale a scrivere `ospite_id` IS NOT NULL, ma meno parlante
+
+
+- Selezionare tutte le stanze del primo piano
+
+    SELECT *
+	FROM `stanze`
+	WHERE `floor` = 1;
+
+
+- Selezionare tutti gli ospiti che iniziano per E
+
+    SELECT *
+	FROM `ospiti`
+	WHERE `name` LIKE "e%";
+
+
+- Selezionare tutti gli ospiti che abbiano meno di 30 anni
+
+    SELECT *
+    FROM `ospiti`
+    WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) < 30 // soluzione 1
+        OR  `date_of_birth` > (CURDATE() - INTERVAL 30 YEAR); // soluzione 2
+
+
+- Seleziona tutte le prenotazioni precedenti a maggio 2018
+
+    SELECT *
+    FROM `prenotazioni`
+    WHERE `created_at` < '2018-05-01';
+
+
+------------------------------------------
+
+- Selezionare i paganti e i relativi dati ospite
+
+    SELECT *
+    FROM paganti
+    LEFT JOIN ospiti
+    ON paganti.ospite_id = ospiti.id;
+
+
+- Selezionare tutti i pagamenti con i dati relativi alla prenotazione
+    SELECT *
+    FROM `pagamenti`
+    JOIN prenotazioni
+    ON pagamenti.prenotazione_id = prenotazioni.id;
